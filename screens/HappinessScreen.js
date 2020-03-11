@@ -15,6 +15,10 @@ export default function HappinessScreen() {
     setcurrentHappiness, 
   ] = React.useState(7);
   const [
+    unique, 
+    setUnique, 
+  ] = React.useState(1);
+  const [
     currentImportPrice, 
     setcurrentImportPrice, 
   ] = React.useState(3);
@@ -28,9 +32,14 @@ export default function HappinessScreen() {
   ] = React.useState(3);
   
   const unfedProvinces = 25 - (currentOccupiedProvinces + currentGrain);
+  
+  useEffect(() => {
+    // Hack to refresh view (fixing render bug)
+    setUnique(Math.floor(Math.random() * (+100 - +1)) + +1);
+  }, []);
 
   const importCost = () => {
-    return [0,1,2,3,4,5,6,7,8,9,10].map(importNr => {
+    return [0,1,2,3,4,5,6,7,8,9,10,11,12].map(importNr => {
       return (
         <View style={styles.tableRow} key={importNr}>
           <Text style={styles.number}>{importNr * currentImportPrice}</Text>
@@ -40,7 +49,7 @@ export default function HappinessScreen() {
   }
   
   const moveHappiness = () => {
-    return [0,1,2,3,4,5,6,7,8,9,10].map(importNr => {
+    return [0,1,2,3,4,5,6,7,8,9,10,11,12].map(importNr => {
       return (
         <View style={styles.tableRow} key={importNr}>
           <Text style={styles.number}>{(currentHappiness + importNr) - unfedProvinces}</Text>
@@ -50,7 +59,7 @@ export default function HappinessScreen() {
   }
   
   return (
-    <View style={styles.container}>
+    <View style={styles.container} key={unique}>
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
@@ -153,7 +162,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderBottomWidth: 3,
     borderBottomColor: '#5d1713',
-    paddingTop: 15,
+    paddingTop: 40,
     paddingBottom: 15,
     backgroundColor: '#5d1713'
   },
@@ -200,7 +209,8 @@ const styles = StyleSheet.create({
   tableWrapper: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    flexBasis: '50%'
   },
   table: {
     flex: 1,
@@ -211,6 +221,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     padding: 4,
+    height: 30,
+    resizeMode: 'contain',
     borderBottomWidth: 1,
     borderBottomColor: '#d3cdbd',
     color: '#5d1713',

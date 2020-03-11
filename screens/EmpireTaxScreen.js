@@ -340,7 +340,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderBottomWidth: 3,
     borderBottomColor: '#5d1713',
-    paddingTop: 15, //40
+    paddingTop: 40, //40
     paddingBottom: 15,
     backgroundColor: '#5d1713'
   },
