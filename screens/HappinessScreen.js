@@ -7,7 +7,8 @@ import {
   TextInput,
   Image,
 } from 'react-native';
-import CheckBox from 'react-native-check-box'
+// import i18n from 'i18n-js';
+// import i18n from '../locales/i18n';
 
 export default function HappinessScreen() {
   const [
@@ -64,15 +65,15 @@ export default function HappinessScreen() {
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>DTP: Tax & Food calculator</Text>
-          <Text style={styles.headerText}>Happiness</Text>
+          <Text style={styles.headerText}>{i18n.t('appTitle')}</Text>
+          <Text style={styles.headerText}>{i18n.t('tabHappiness')}</Text>
         </View>
         
         <View style={styles.content}>
         
           <View style={styles.row}>
             <View style={styles.col}>
-              <Text style={styles.label}>Current happiness</Text>
+              <Text style={styles.label}>{i18n.t('currentHappiness')}</Text>
               <TextInput
                 numeric
                 defaultvalue="7"
@@ -83,7 +84,7 @@ export default function HappinessScreen() {
               />
             </View>
             <View style={styles.col}>
-              <Text style={styles.label}>Import price</Text>
+              <Text style={styles.label}>{i18n.t('importPrice')}</Text>
               <TextInput
                 numeric
                 defaultvalue="3"
@@ -97,7 +98,7 @@ export default function HappinessScreen() {
         
           <View style={styles.row}>
             <View style={styles.col}>
-              <Text style={styles.label}>Occupied provinces</Text>
+              <Text style={styles.label}>{i18n.t('occupiedProvinces')}</Text>
               <TextInput
                 numeric
                 defaultvalue="8"
@@ -108,7 +109,7 @@ export default function HappinessScreen() {
               />
             </View>
             <View style={styles.col}>
-              <Text style={styles.label}>Grain in storage</Text>
+              <Text style={styles.label}>{i18n.t('grainInStorage')}</Text>
               <TextInput
                 numeric
                 defaultvalue="8"
@@ -125,14 +126,14 @@ export default function HappinessScreen() {
               <View style={styles.tableCol}>
                 <View key="header">
                   <Text style={styles.tableColHeading}>
-                    <Image source={require('../assets/images/tax.png')} style={{width: 15, height: 15}} /> Import cost
+                    <Image source={require('../assets/images/tax.png')} style={{ width: 15, height: 15 }} /> {i18n.t('importCost')}
                   </Text>
                 </View>
                 {importCost()}
               </View>
               <View style={styles.tableCol}>
                 <View key="header">
-                  <Text style={styles.tableColHeading}><Image source={require('../assets/images/happiness.png')} style={{width: 15, height: 15}} /> Move happiness</Text>
+                  <Text style={styles.tableColHeading}><Image source={require('../assets/images/happiness.png')} style={{ width: 15, height: 15 }} /> {i18n.t('moveHappiness')}</Text>
                 </View>
                 {moveHappiness()}
               </View>

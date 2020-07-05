@@ -7,7 +7,10 @@ import {
   TextInput,
   Image,
 } from 'react-native';
-import CheckBox from 'react-native-check-box'
+import CheckBox from 'react-native-check-box';
+import strings from '../locales/localization'
+// import i18n from 'i18n-js';
+// import i18n from '../locales/i18n';
 
 export default function EmpireTaxScreen() {
   const [
@@ -117,13 +120,13 @@ export default function EmpireTaxScreen() {
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>DTP: Tax & Food calculator</Text>
-          <Text style={styles.headerText}>Empire Tax</Text>
+          <Text style={styles.headerText}>{strings.appTitle}</Text>
+          <Text style={styles.headerText}>{strings.tabEmpireTax}</Text>
         </View>
         
         <View style={styles.content}>
           
-          <Text style={styles.topLabel}><Image source={require('../assets/images/region1.png')} style={{width: 10, height: 10}} /> Region 1</Text>
+          <Text style={styles.topLabel}><Image source={require('../assets/images/region1.png')} style={{ width: 10, height: 10 }} /> {strings.region} 1</Text>
           <View style={styles.row}>
             <View style={styles.col}>
               <CheckBox
@@ -137,7 +140,7 @@ export default function EmpireTaxScreen() {
                   },
                 ]))}
                 isChecked={isChecked1}
-                rightText={"Famished"}
+                rightText={strings.famished}
                 rightTextStyle={{color: '#5d1713'}}
                 checkedImage={<Image source={require('../assets/images/checkbox_checked.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
                 unCheckedImage={<Image source={require('../assets/images/checkbox.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
@@ -146,7 +149,7 @@ export default function EmpireTaxScreen() {
             <View style={styles.col}>
             {!isChecked1 &&
               <View>
-                <Text style={styles.label}>Occupied provinces:</Text>
+                <Text style={styles.label}>{strings.occupiedProvinces}:</Text>
                 <View
                 style={styles.input}>
                   <TextInput
@@ -170,7 +173,7 @@ export default function EmpireTaxScreen() {
             </View>
           </View>
           
-          <Text style={styles.topLabel}><Image source={require('../assets/images/region2.png')} style={{width: 10, height: 10}} /> Region 2</Text>
+          <Text style={styles.topLabel}><Image source={require('../assets/images/region2.png')} style={{ width: 10, height: 10 }} /> {strings.region} 2</Text>
           <View style={styles.row}>
             <View style={styles.col}>
               <CheckBox
@@ -184,7 +187,7 @@ export default function EmpireTaxScreen() {
                   },
                 ]))}
                 isChecked={isChecked2}
-                rightText={"Famished"}
+                rightText={strings.famished}
                 rightTextStyle={{color: '#5d1713'}}
                 checkedImage={<Image source={require('../assets/images/checkbox_checked.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
                 unCheckedImage={<Image source={require('../assets/images/checkbox.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
@@ -193,7 +196,7 @@ export default function EmpireTaxScreen() {
             <View style={styles.col}>
             {!isChecked2 &&
               <View>
-                <Text style={styles.label}>Occupied provinces:</Text>
+                <Text style={styles.label}>{strings.occupiedProvinces}:</Text>
                 <View
                 style={styles.input}>
                   <TextInput
@@ -218,7 +221,7 @@ export default function EmpireTaxScreen() {
           </View>
           
           
-          <Text style={styles.topLabel}><Image source={require('../assets/images/region3.png')} style={{width: 10, height: 10}} /> Region 3</Text>
+          <Text style={styles.topLabel}><Image source={require('../assets/images/region3.png')} style={{ width: 10, height: 10 }} /> {strings.region} 3</Text>
           <View style={styles.row}>
             <View style={styles.col}>
               <CheckBox
@@ -232,7 +235,7 @@ export default function EmpireTaxScreen() {
                   },
                 ]))}
                 isChecked={isChecked3}
-                rightText={"Famished"}
+                rightText={strings.famished}
                 rightTextStyle={{color: '#5d1713'}}
                 checkedImage={<Image source={require('../assets/images/checkbox_checked.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
                 unCheckedImage={<Image source={require('../assets/images/checkbox.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
@@ -241,7 +244,7 @@ export default function EmpireTaxScreen() {
             <View style={styles.col}>
             {!isChecked3 &&
               <View>
-                <Text style={styles.label}>Occupied provinces:</Text>
+                <Text style={styles.label}>{strings.occupiedProvinces}:</Text>
                 <View
                 style={styles.input}>
                   <TextInput
@@ -267,7 +270,7 @@ export default function EmpireTaxScreen() {
           
           
           
-          <Text style={styles.topLabel}><Image source={require('../assets/images/region4.png')} style={{width: 10, height: 10}} /> Region 4</Text>
+          <Text style={styles.topLabel}><Image source={require('../assets/images/region4.png')} style={{ width: 10, height: 10 }} /> {strings.region} 4</Text>
           <View style={styles.row}>
             <View style={styles.col}>
               <CheckBox
@@ -281,7 +284,7 @@ export default function EmpireTaxScreen() {
                   },
                 ]))}
                 isChecked={isChecked4}
-                rightText={"Famished"}
+                rightText={strings.famished}
                 rightTextStyle={{color: '#5d1713'}}
                 checkedImage={<Image source={require('../assets/images/checkbox_checked.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
                 unCheckedImage={<Image source={require('../assets/images/checkbox.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
@@ -290,7 +293,7 @@ export default function EmpireTaxScreen() {
             <View style={styles.col}>
             {!isChecked4 &&
               <View>
-                <Text style={styles.label}>Occupied provinces:</Text>
+                <Text style={styles.label}>{strings.occupiedProvinces}:</Text>
                 <View
                 style={styles.input}>
                   <TextInput
