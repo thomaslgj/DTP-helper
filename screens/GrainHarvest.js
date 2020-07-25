@@ -1,22 +1,18 @@
-import * as WebBrowser from 'expo-web-browser';
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Image,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   TextInput,
 } from 'react-native';
 import CheckBox from 'react-native-check-box'
-// import i18n from 'i18n-js';
-// import i18n, { loadLocale } from '../locales/i18n';
-import strings from '../locales/localization'
-import { changeLanguage } from '../locales/localization'
+import i18n, { handleLanguageChange } from '../locales/i18n';
 
-export default function GrainHarvest(changeLang) {
+export default function GrainHarvest(props) {
+  console.log('props', props)
+  console.log(i18n.t('appTitle'))
   const [
     isChecked1, 
     setChecked1, 
@@ -80,29 +76,24 @@ export default function GrainHarvest(changeLang) {
         contentContainerStyle={styles.contentContainer}>
         <View style={styles.header}>
           <View>
-            <Text style={styles.headerText}>{strings.appTitle}</Text>
-            <Text style={styles.headerText}>{strings.tabGrainHarvest}</Text>
+            <Text style={styles.headerText}>{i18n.t('appTitle')}</Text>
+            <Text style={styles.headerText}>{i18n.t('tabGrainHarvest')}</Text>
           </View>
           <View>
-            {/* <AppContext.Consumer> */}
-              {/* {({lang, toggleLang}) => (
-                <button onClick={toggleLang('es_ES')}>Spanish</button>
-              )} */}
-              {}
-            <button onClick={() => changeLanguage('es') }>Spanish</button>
-            {/* </AppContext.Consumer> */}
+            <button onClick={() => handleLanguageChange('es') }>Spanish</button>
+            <button onClick={() => handleLanguageChange('en') }>English</button>
           </View>
         </View>
 
         <View style={styles.content}>
           <View style={styles.row}>
-            <Text style={styles.label}><Image source={require('../assets/images/region1.png')} style={{ width: 10, height: 10 }} /> {strings.region} 1</Text>
+            <Text style={styles.label}><Image source={require('../assets/images/region1.png')} style={{ width: 10, height: 10 }} /> {i18n.t('region')} 1</Text>
             <View style={{ flexDirection: 'row' }}>
             <CheckBox
               style={{flex: 1, padding: 5, width: 30, height: 30}}
               onClick={() => updateSum('isChecked1')}
               isChecked={isChecked1}
-              rightText={strings.famishedOrOccupied}
+              rightText={i18n.t('famishedOrOccupied')}
               rightTextStyle={{color: '#5d1713'}}
               checkedImage={<Image source={require('../assets/images/checkbox_checked.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
               unCheckedImage={<Image source={require('../assets/images/checkbox.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
@@ -110,13 +101,13 @@ export default function GrainHarvest(changeLang) {
             </View>
           </View>
           <View style={styles.row}>
-            <Text style={styles.label}><Image source={require('../assets/images/region2.png')} style={{ width: 10, height: 10 }} /> {strings.region} 2</Text>
+            <Text style={styles.label}><Image source={require('../assets/images/region2.png')} style={{ width: 10, height: 10 }} /> {i18n.t('region')} 2</Text>
             <View style={{ flexDirection: 'row' }}>
             <CheckBox
               style={{flex: 1, padding: 5, width: 30, height: 30}}
               onClick={() => updateSum('isChecked2')}
               isChecked={isChecked2}
-              rightText={strings.famishedOrOccupied}
+              rightText={i18n.t('famishedOrOccupied')}
               rightTextStyle={{color: '#5d1713'}}
               checkedImage={<Image source={require('../assets/images/checkbox_checked.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
               unCheckedImage={<Image source={require('../assets/images/checkbox.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
@@ -124,13 +115,13 @@ export default function GrainHarvest(changeLang) {
             </View>
           </View>
           <View style={styles.row}>
-            <Text style={styles.label}><Image source={require('../assets/images/region3.png')} style={{ width: 10, height: 10 }} /> {strings.region} 3</Text>
+            <Text style={styles.label}><Image source={require('../assets/images/region3.png')} style={{ width: 10, height: 10 }} /> {i18n.t('region')} 3</Text>
             <View style={{ flexDirection: 'row' }}>
             <CheckBox
               style={{flex: 1, padding: 5, width: 30, height: 30}}
               onClick={() => updateSum('isChecked3')}
               isChecked={isChecked3}
-              rightText={strings.famishedOrOccupied}
+              rightText={i18n.t('famishedOrOccupied')}
               rightTextStyle={{color: '#5d1713'}}
               checkedImage={<Image source={require('../assets/images/checkbox_checked.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
               unCheckedImage={<Image source={require('../assets/images/checkbox.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
@@ -138,13 +129,13 @@ export default function GrainHarvest(changeLang) {
             </View>
           </View>
           <View style={styles.row}>
-            <Text style={styles.label}><Image source={require('../assets/images/region4.png')} style={{ width: 10, height: 10 }} /> {strings.region} 4</Text>
+            <Text style={styles.label}><Image source={require('../assets/images/region4.png')} style={{ width: 10, height: 10 }} /> {i18n.t('region')} 4</Text>
             <View style={{ flexDirection: 'row' }}>
             <CheckBox
               style={{flex: 1, padding: 5, width: 30, height: 30}}
               onClick={() => updateSum('isChecked4')}
               isChecked={isChecked4}
-              rightText={strings.famishedOrOccupied}
+              rightText={i18n.t('famishedOrOccupied')}
               rightTextStyle={{color: '#5d1713'}}
               checkedImage={<Image source={require('../assets/images/checkbox_checked.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
               unCheckedImage={<Image source={require('../assets/images/checkbox.png')} style={{width: 30, height: 30, resizeMode: 'contain'}}/>}
@@ -169,7 +160,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#e9e5df',
-    color: '#5d1713',
   },
   contentContainer: {
   },

@@ -8,7 +8,7 @@ import {
   Image,
 } from 'react-native';
 // import i18n from 'i18n-js';
-// import i18n from '../locales/i18n';
+import i18n from '../locales/i18n';
 
 export default function HappinessScreen() {
   const [
