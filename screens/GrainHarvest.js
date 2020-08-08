@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerBtn: {
-    backgroundColor: 'none',
+    backgroundColor: 'transparent',
     color: '#d1aa2a',
   },
   headerText: {

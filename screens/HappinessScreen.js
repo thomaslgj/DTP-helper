@@ -172,7 +172,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#e9e5df',
-    color: '#5d1713',
   },
   contentContainer: {
   },
@@ -196,7 +195,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerBtn: {
-    backgroundColor: 'none',
+    backgroundColor: 'transparent',
     color: '#d1aa2a',
   },
   headerText: {
@@ -214,7 +213,7 @@ const styles = StyleSheet.create({
   },
   col: {
     width: '50%',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   textInput: {
     maxWidth: '80%',
@@ -258,15 +257,12 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     borderBottomWidth: 1,
     borderBottomColor: '#d3cdbd',
-    color: '#5d1713',
   },
   tableCol: {
     width: 130,
-    color: '#5d1713',
-    textAlign: 'center'
+    textAlign: 'left'
   },
   tableColHeading: {
-    height: 30,
     color: '#5d1713',
   },
   number: {

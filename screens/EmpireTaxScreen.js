@@ -11,7 +11,6 @@ import {
 import CheckBox from 'react-native-check-box';
 
 export default function EmpireTaxScreen(props) {
-  // const { t, i18n, navigation } = props;
   const { screenProps } = props;
   const { changeLang, i18n, lang } = screenProps;
   const [
@@ -171,7 +170,7 @@ export default function EmpireTaxScreen(props) {
                 <View
                 style={styles.input}>
                   <TextInput
-                  numeric
+                  numeric="true"
                   keyboardType="numeric"
                   numberOfLines={1}
                   returnKeyLabel='Done' 
@@ -352,7 +351,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#e9e5df',
-    color: '#5d1713',
   },
   contentContainer: {
   },
@@ -376,7 +374,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerBtn: {
-    backgroundColor: 'none',
+    backgroundColor: 'transparent',
     color: '#d1aa2a',
   },
   headerText: {
@@ -395,7 +393,6 @@ const styles = StyleSheet.create({
   },
   col: {
     width: '50%',
-    height: '80px'
   },
   label: {
     paddingTop: 10,
@@ -416,12 +413,12 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 2,
     borderColor: 'gray',
-    color: '#5d1713',
     padding: 5,
     backgroundColor: '#fff',
     marginTop: 4,
     marginBottom: 10,
-    width: 100
+    width: 100,
+    height: 30
   },
   sum: {
     marginTop: 20,
