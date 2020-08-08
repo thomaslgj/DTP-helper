@@ -50,14 +50,12 @@ export class CustomI18nextProvider extends React.Component {
   cacheUserLanguage = async locale => {
     try {
       await AsyncStorage.setItem('global:lang', locale)
-      console.log('setting lang ', locale)
       this.setState((state) => ({
         ...state,
         options: {
           lng: locale
         },
       }))
-      console.log('setting lang state', this.state.options.lng)
       
     } catch (error) {
       console.log('Error setting global language')
@@ -67,7 +65,6 @@ export class CustomI18nextProvider extends React.Component {
   getUserLanguage = async () => {
     try {
       const cachedLanguage = await AsyncStorage.getItem('global:lang');
-      console.log('cached lang ', cachedLanguage);
       return cachedLanguage !== null ? cachedLanguage : this.getSystemLanguage();
     } catch (error) {
       console.log('Error getting global language');
@@ -94,6 +91,7 @@ export class CustomI18nextProvider extends React.Component {
         lng: currentLanguage
       },
     }))
+    // await Updates.reloadAsync()
   }
 
   componentDidMount() {
@@ -103,7 +101,6 @@ export class CustomI18nextProvider extends React.Component {
   render () {
     i18n.on('languageChanged', this.cacheUserLanguage);
     const lang = this.state.options.lng
-    console.log('this.state', this.state)
     
     i18n.on('missingKey', function (lngs, namespace, key) {
       console.warn(`Missing key: ${key}`);
