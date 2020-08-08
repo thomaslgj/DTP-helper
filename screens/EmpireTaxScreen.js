@@ -6,13 +6,14 @@ import {
   View,
   TextInput,
   Image,
+  TouchableOpacity
 } from 'react-native';
 import CheckBox from 'react-native-check-box';
-// import i18n from 'i18n-js';
-import { translate } from 'react-i18next';
 
 export default function EmpireTaxScreen(props) {
-  const { t, i18n, navigation } = props;
+  // const { t, i18n, navigation } = props;
+  const { screenProps } = props;
+  const { changeLang, i18n, lang } = screenProps;
   const [
     isChecked1, 
     setChecked1, 
@@ -120,8 +121,25 @@ export default function EmpireTaxScreen(props) {
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>{i18n.t('appTitle')}</Text>
-          <Text style={styles.headerText}>{i18n.t('tabEmpireTax')}</Text>
+          <View style={styles.headerCol}>
+            <Text style={styles.headerText}>{i18n.t('appTitle')}</Text>
+            <Text style={styles.headerText}>{i18n.t('tabEmpireTax')}</Text>
+          </View>
+          <View style={styles.headerLang}>
+            {lang === 'en' ? (
+              <TouchableOpacity onPress={() => changeLang('es')}>
+                <Text style={styles.headerBtn}>
+                  <Image source={require('../assets/images/es.png')} style={{ width: 30, height: 30 }} />
+                </Text>
+              </TouchableOpacity>
+            ) : (
+                <TouchableOpacity onPress={() => changeLang('en')}>
+                  <Text style={styles.headerBtn}>
+                    <Image source={require('../assets/images/en.png')} style={{ width: 30, height: 30 }} />
+                  </Text>
+                </TouchableOpacity>
+              )}
+          </View>
         </View>
         
         <View style={styles.content}>
@@ -340,12 +358,26 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    marginBottom: 10,
     borderBottomWidth: 3,
     borderBottomColor: '#5d1713',
-    paddingTop: 40, //40
+    paddingTop: 40,
     paddingBottom: 15,
-    backgroundColor: '#5d1713'
+    paddingRight: 15,
+    paddingLeft: 15,
+    backgroundColor: '#5d1713',
+    flexDirection: 'row',
+    flex: 1,
+  },
+  headerCol: {
+    width: '75%',
+  },
+  headerLang: {
+    width: '35%',
+    alignItems: 'center',
+  },
+  headerBtn: {
+    backgroundColor: 'none',
+    color: '#d1aa2a',
   },
   headerText: {
     color: '#d1aa2a',
@@ -356,7 +388,6 @@ const styles = StyleSheet.create({
   },
   row: {
     paddingTop: 5,
-    paddingBottom: 5,
     flex: 1,
     flexDirection: 'row',
     borderBottomWidth: 2,
@@ -364,6 +395,7 @@ const styles = StyleSheet.create({
   },
   col: {
     width: '50%',
+    height: '80px'
   },
   label: {
     paddingTop: 10,
@@ -387,7 +419,6 @@ const styles = StyleSheet.create({
     color: '#5d1713',
     padding: 5,
     backgroundColor: '#fff',
-    height: 30,
     marginTop: 4,
     marginBottom: 10,
     width: 100

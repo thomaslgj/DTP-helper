@@ -20,10 +20,12 @@ class WrappedStack extends React.Component {
   static router = Stack.router;
 
   render() {
-    console.log('this.props', this.props)
-    const { i18n } = this.props;
     // When this is working, switch Stack with AppNavigator to get navigation tabs (and inject props)
-    return <Stack screenProps={{ i18n }} {...this.props} />;
+    return (
+      <View style={styles.container}>
+        <AppNavigator screenProps={{ ...this.props }} />
+      </View>
+    );
   }
 }
 

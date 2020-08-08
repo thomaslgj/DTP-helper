@@ -6,11 +6,12 @@ import {
   View,
   TextInput,
   Image,
+  TouchableOpacity
 } from 'react-native';
-// import i18n from 'i18n-js';
-import i18n from '../locales/i18n';
 
-export default function HappinessScreen() {
+export default function HappinessScreen(props) {
+  const { screenProps } = props;
+  const { changeLang, i18n, lang } = screenProps;
   const [
     currentHappiness, 
     setcurrentHappiness, 
@@ -65,8 +66,25 @@ export default function HappinessScreen() {
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>{i18n.t('appTitle')}</Text>
-          <Text style={styles.headerText}>{i18n.t('tabHappiness')}</Text>
+          <View style={styles.headerCol}>
+            <Text style={styles.headerText}>{i18n.t('appTitle')}</Text>
+            <Text style={styles.headerText}>{i18n.t('tabHappiness')}</Text>
+          </View>
+          <View style={styles.headerLang}>
+            {lang === 'en' ? (
+              <TouchableOpacity onPress={() => changeLang('es')}>
+                <Text style={styles.headerBtn}>
+                  <Image source={require('../assets/images/es.png')} style={{ width: 30, height: 30 }} />
+                </Text>
+              </TouchableOpacity>
+            ) : (
+                <TouchableOpacity onPress={() => changeLang('en')}>
+                  <Text style={styles.headerBtn}>
+                    <Image source={require('../assets/images/en.png')} style={{ width: 30, height: 30 }} />
+                  </Text>
+                </TouchableOpacity>
+              )}
+          </View>
         </View>
         
         <View style={styles.content}>
@@ -76,7 +94,7 @@ export default function HappinessScreen() {
               <Text style={styles.label}>{i18n.t('currentHappiness')}</Text>
               <TextInput
                 numeric
-                defaultvalue="7"
+                defaultValue="7"
                 keyboardType="numeric"
                 style={styles.textInput}
                 numberOfLines={1}
@@ -87,7 +105,7 @@ export default function HappinessScreen() {
               <Text style={styles.label}>{i18n.t('importPrice')}</Text>
               <TextInput
                 numeric
-                defaultvalue="3"
+                defaultValue="3"
                 keyboardType="numeric"
                 style={styles.textInput}
                 numberOfLines={1}
@@ -101,7 +119,7 @@ export default function HappinessScreen() {
               <Text style={styles.label}>{i18n.t('occupiedProvinces')}</Text>
               <TextInput
                 numeric
-                defaultvalue="8"
+                defaultValue="8"
                 keyboardType="numeric"
                 style={styles.textInput}
                 numberOfLines={1}
@@ -112,7 +130,7 @@ export default function HappinessScreen() {
               <Text style={styles.label}>{i18n.t('grainInStorage')}</Text>
               <TextInput
                 numeric
-                defaultvalue="8"
+                defaultValue="8"
                 keyboardType="numeric"
                 style={styles.textInput}
                 numberOfLines={1}
@@ -160,12 +178,26 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    marginBottom: 10,
     borderBottomWidth: 3,
     borderBottomColor: '#5d1713',
     paddingTop: 40,
     paddingBottom: 15,
-    backgroundColor: '#5d1713'
+    paddingRight: 15,
+    paddingLeft: 15,
+    backgroundColor: '#5d1713',
+    flexDirection: 'row',
+    flex: 1,
+  },
+  headerCol: {
+    width: '75%',
+  },
+  headerLang: {
+    width: '35%',
+    alignItems: 'center',
+  },
+  headerBtn: {
+    backgroundColor: 'none',
+    color: '#d1aa2a',
   },
   headerText: {
     color: '#d1aa2a',

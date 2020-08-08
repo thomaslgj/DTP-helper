@@ -6,13 +6,13 @@ import {
   Text,
   View,
   TextInput,
+  TouchableOpacity
 } from 'react-native';
 import CheckBox from 'react-native-check-box'
-import i18n, { handleLanguageChange } from '../locales/i18n';
 
 export default function GrainHarvest(props) {
-  console.log('props', props)
-  console.log(i18n.t('appTitle'))
+  const { screenProps } = props;
+  const { changeLang, i18n, lang } = screenProps;
   const [
     isChecked1, 
     setChecked1, 
@@ -75,13 +75,24 @@ export default function GrainHarvest(props) {
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
         <View style={styles.header}>
-          <View>
+          <View style={styles.headerCol}>
             <Text style={styles.headerText}>{i18n.t('appTitle')}</Text>
             <Text style={styles.headerText}>{i18n.t('tabGrainHarvest')}</Text>
           </View>
-          <View>
-            <button onClick={() => handleLanguageChange('es') }>Spanish</button>
-            <button onClick={() => handleLanguageChange('en') }>English</button>
+          <View style={styles.headerLang}>
+            { lang === 'en' ? (
+              <TouchableOpacity onPress={() => changeLang('es')}>
+                <Text style={styles.headerBtn}>
+                  <Image source={require('../assets/images/es.png')} style={{ width: 30, height: 30 }} />
+                </Text>
+              </TouchableOpacity>
+              ) : (
+              <TouchableOpacity onPress={() => changeLang('en')}>
+                <Text style={styles.headerBtn}>
+                    <Image source={require('../assets/images/en.png')} style={{ width: 30, height: 30 }} />
+                </Text>
+              </TouchableOpacity>
+            )}
           </View>
         </View>
 
@@ -170,7 +181,22 @@ const styles = StyleSheet.create({
     borderBottomColor: '#5d1713',
     paddingTop: 40,
     paddingBottom: 15,
-    backgroundColor: '#5d1713'
+    paddingRight: 15,
+    paddingLeft: 15,
+    backgroundColor: '#5d1713',
+    flexDirection: 'row',
+    flex: 1,
+  },
+  headerCol: {
+    width: '75%',
+  },
+  headerLang: {
+    width: '35%',
+    alignItems: 'center',
+  },
+  headerBtn: {
+    backgroundColor: 'none',
+    color: '#d1aa2a',
   },
   headerText: {
     color: '#d1aa2a',
