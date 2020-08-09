@@ -70,21 +70,29 @@ export default function HappinessScreen(props) {
             <Text style={styles.headerText}>{i18n.t('appTitle')}</Text>
             <Text style={styles.headerText}>{i18n.t('tabHappiness')}</Text>
           </View>
-          <View style={styles.headerLang}>
-            {lang === 'en' ? (
+          {lang === 'en' ? (
+            <View style={styles.headerLang}>
+              <Text style={styles.headerBtnInactive}>
+                <Image source={require('../assets/images/en.png')} style={{ width: 30, height: 30 }} />
+              </Text>
               <TouchableOpacity onPress={() => changeLang('es')}>
                 <Text style={styles.headerBtn}>
                   <Image source={require('../assets/images/es.png')} style={{ width: 30, height: 30 }} />
                 </Text>
               </TouchableOpacity>
-            ) : (
+            </View>
+          ) : (
+              <View style={styles.headerLang}>
                 <TouchableOpacity onPress={() => changeLang('en')}>
                   <Text style={styles.headerBtn}>
                     <Image source={require('../assets/images/en.png')} style={{ width: 30, height: 30 }} />
                   </Text>
                 </TouchableOpacity>
-              )}
-          </View>
+                <Text style={styles.headerBtnInactive}>
+                  <Image source={require('../assets/images/es.png')} style={{ width: 30, height: 30 }} />
+                </Text>
+              </View>
+            )}
         </View>
         
         <View style={styles.content}>
@@ -193,10 +201,15 @@ const styles = StyleSheet.create({
   headerLang: {
     width: '35%',
     alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
   },
   headerBtn: {
     backgroundColor: 'transparent',
-    color: '#d1aa2a',
+    opacity: 0.5
+  },
+  headerBtnInactive: {
+    backgroundColor: 'transparent',
   },
   headerText: {
     color: '#d1aa2a',
