@@ -206,10 +206,12 @@ const styles = StyleSheet.create({
   },
   headerBtn: {
     backgroundColor: 'transparent',
-    opacity: 0.5
+    opacity: 0.5,
+    width: 40
   },
   headerBtnInactive: {
     backgroundColor: 'transparent',
+    width: 40
   },
   headerText: {
     color: '#d1aa2a',
